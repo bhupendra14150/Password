@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link href="style.css" rel="stylesheet"> -->
+     <style>
+        .container{
+            display: flex;
+            background-color: blueviolet;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }body{
+            background-color: aquamarine;
+        }
+        #btn{
+            background-color: brown;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 50%;
+            color:beige;
+            margin-top:4rem;
+        }
+        #password{
+            color:whitesmoke;
+        }
+
+     </style>
+</head>
+<body>
+    <div class="container">
+        <p id="password">testing</p>
+        Number<input id="numbered" type="number">
+        Uppercase<input id="upper" type="checkbox">
+        Lowercase:<input id="lower" type="checkbox">
+        Symbol:<input id="symbol" type="checkbox">
+        Number:<input id="num" type="checkbox">
+    </div>
+    <button id="btn">GeneratePassword</button>
+    <script>
+let a="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let b="1234567890";
+let c="!#$%^&*()_+:";
+let d="abcdefghijklmnopqrstuvwxyz";
+
+let pass=document.getElementById("password");
+
+
+let upperinput=document.getElementById("upper");
+let lowerinput=document.getElementById("lower")
+let symbolinput=document.getElementById("symbol");
+let numberinput=document.getElementById("num");
+let numb=document.getElementById("numbered");
+console.log(numb);
+
+
+
+
+const getPassword=(dataset)=>{
+    return dataset[Math.floor(Math.random()*dataset.length)]
+
+
+}
+
+const gen=(password="")=>{
+    if(upperinput.checked){
+        password+=getPassword(a);
+    }
+    if(lowerinput.checked){
+        password+=getPassword(d);
+    }
+    if(symbolinput.checked){
+        password+=getPassword(c);
+    }
+    if(numberinput.checked){
+        password+=getPassword(b);
+    }
+    if(password.length<numb.value){
+
+        return gen(password);
+    }
+pass.innerHTML=password;
+}
+
+document.getElementById("btn").addEventListener("click",function(){
+gen();
+
+})
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
